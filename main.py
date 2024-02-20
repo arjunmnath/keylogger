@@ -5,8 +5,6 @@ import uuid
 import threading
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-# api key = AIzaSyAQoZFWE3ey9XAvKLwtOPe-jKFhx-hbv7A
-##C:\Users\Owner\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 
 ROOT = 'C:\\Users\\Owner\\.systemlogs\\'
